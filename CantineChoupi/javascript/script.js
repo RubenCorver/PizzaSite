@@ -13,10 +13,11 @@ function api() {
     })
         .then(function (categories) {
             console.log(categories);
-            categoryAdd(categories);
             if (check == true) {
                 check = false;
                 output(categories);
+            } else {
+                categoryAdd(categories);
             }
         })
 }
