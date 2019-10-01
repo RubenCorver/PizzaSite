@@ -1,0 +1,12 @@
+.categories {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-gap: 10px;
+    text-align: center;
+    justify-content: center;
+}
+.category{
+    border: solid 1px;
+    border-color: black;
+    width: 90%;
+}
