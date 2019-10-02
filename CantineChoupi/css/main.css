@@ -11,5 +11,19 @@
   border-color: black;
   width: 90%;
 }
+.category__container {
+  display: grid;
+  grid-template-columns: 30% 30%;
+  justify-content: center;
+}
+
+.product__name {
+  padding: 15px;
+  margin-block-start: 0.1em;
+  margin-block-end: 0.2em;
+}
+.product__name:hover {
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=main.css.map */

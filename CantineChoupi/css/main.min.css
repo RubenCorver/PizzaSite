@@ -1,0 +1,1 @@
+.categories{display:grid;grid-template-columns:45% 45%;grid-gap:10px;text-align:center;justify-content:center}.category{border:solid 1px;border-color:#000;width:90%}.category__container{display:grid;grid-template-columns:30% 30%;justify-content:center}.product__name{padding:15px;margin-block-start:.1em;margin-block-end:.2em}.product__name:hover{cursor:pointer}

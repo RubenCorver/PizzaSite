@@ -5,8 +5,27 @@
     text-align: center;
     justify-content: center;
 }
-.category{
+
+.category {
     border: solid 1px;
     border-color: black;
     width: 90%;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 30% 30%;
+        justify-content: center;
+    }
+}
+
+.product {
+    &__name {
+        padding: 15px;
+        margin-block-start: 0.1em;
+        margin-block-end: 0.2em;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
