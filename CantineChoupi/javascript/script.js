@@ -99,4 +99,7 @@ function onecatProduct() {
 }
 window.onload = function () {
     api()
+    document.querySelector(".checkout__button").addEventListener("click", function(){
+        window.location.href="checkout.html";
+    })
 }
