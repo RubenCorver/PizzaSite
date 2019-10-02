@@ -1,9 +1,13 @@
 let method = "categoriesWithProducts";
 let check = false;
 let category_id = "";
-function productClick() {
-    let ordername = event.target.className.split(" ")[1];
+
+function productClick(cat) {
+    let orderid = event.target.className.split(" ")[1];
+    let id = cat.products.find(catprod => catprod.id == orderid);
+    console.log(id.name);
     alert(ordername);
+
 }
 
 function categoryAdd(cat) {
@@ -26,7 +30,7 @@ function categoryAdd(cat) {
                 catcontainer.className = "category__container";
 
                 let productname = document.createElement("p");
-                productname.className = "product__name " + catprod.name;
+                productname.className = "product__name " + catprod.id;
                 productname.innerHTML = catprod.name;
                 catcontainer.appendChild(productname);
 
@@ -38,7 +42,7 @@ function categoryAdd(cat) {
                 category.appendChild(catcontainer);
 
                 productname.addEventListener("click", function () {
-                    productClick();
+                    productClick(cat);
                 });
             })
         }
