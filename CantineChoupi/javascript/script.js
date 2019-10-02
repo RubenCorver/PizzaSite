@@ -2,7 +2,8 @@ let method = "categoriesWithProducts";
 let check = false;
 let category_id = "";
 function productClick() {
-    alert(event.target.className);
+    let ordername = event.target.className.split(" ")[1];
+    alert(ordername);
 }
 
 function categoryAdd(cat) {
