@@ -1,6 +1,7 @@
 let method = "categoriesWithProducts";
 let check = false;
 let category_id = "";
+let order = [];
 
 function productClick(cat) {
     let orderid = event.target.className.split(" ")[1];
