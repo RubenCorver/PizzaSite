@@ -6,7 +6,6 @@ function productClick(cat) {
     let orderid = event.target.className.split(" ")[1];
     let id = cat.products.find(catprod => catprod.id == orderid);
     console.log(id.name);
-    alert(ordername);
 
 }
 
