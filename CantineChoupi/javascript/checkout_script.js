@@ -20,11 +20,13 @@ function checkout() {
 
     order.forEach(info => {
         let checkproduct = document.createElement("p")
-        checkproduct.className = "checkout__product " + info.id;
+        checkproduct.className = "checkout__product";
+        checkproduct.dataset.product = info.id;
         let name = document.createTextNode(info.name);
 
         let checkprice = document.createElement("p")
-        checkprice.className = "checkout__price " + info.id;
+        checkprice.className = "checkout__price";
+        checkproduct.dataset.product = info.id;
         let price = document.createTextNode(info.price + "$");
 
         let checkicon = document.createElement("i")
@@ -46,7 +48,7 @@ function checkout() {
     for (let i = 0; i < remove.length; ++i) {
         let item = remove[i];
         item.addEventListener("click", function () {
-            let target = event.target.parentNode.className.split(" ")[1];
+            let target = event.target.dataset.product;
             let id = order.find(order => order.id == target);
             console.log(id);
             order.splice(id, 1);

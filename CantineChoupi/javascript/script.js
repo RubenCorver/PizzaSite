@@ -1,16 +1,26 @@
 let method = "categoriesWithProducts";
 let check = false;
 let orders = localStorage.getItem("order");
-let order = JSON.parse(orders);
-
-
-
+let order = [];
+let amount = { order };
 
 function productClick(cat) {
-    let orderid = event.target.className.split(" ")[1];
+    let orderid = event.target.dataset.product;
     let id = cat.products.find(catprod => catprod.id == orderid);
-    order.push(id);
-    console.log(id.name);
+    // if (amount[id.name] > 0) {
+    //     amount[id.name]++;
+    // } else {
+    //     amount[id.name] = 1;
+    // }
+    if (order.includes(id)) {
+        amount[id.name]++;
+    }
+    else {
+        amount[id.name] = 1;
+        order.push(id);
+    }
+    console.log(amount);
+    localStorage.setItem("order", JSON.stringify(amount));
 }
 
 function categoryDisplay(cat) {
@@ -18,7 +28,6 @@ function categoryDisplay(cat) {
         if (cat.products != 0) {
             let category = document.createElement("article")
             category.className = "category";
-
 
             let catname = document.createElement("h3")
             catname.className = "category__name";
@@ -32,7 +41,8 @@ function categoryDisplay(cat) {
                     catcontainer.className = "category__container";
 
                     let productname = document.createElement("p");
-                    productname.className = "product__name " + catprod.id;
+                    productname.className = "product__name"
+                    productname.dataset.product = catprod.id;
                     let prodname = document.createTextNode(catprod.name);
                     productname.appendChild(prodname);
                     catcontainer.appendChild(productname);
@@ -51,8 +61,6 @@ function categoryDisplay(cat) {
                         let proddesc = document.createTextNode(catprod.description);
                         productdesc.appendChild(proddesc);
                         category.appendChild(productdesc);
-                    } else {
-                        console.log("Empty product description");
                     }
 
                     productname.addEventListener("click", function () {
@@ -61,38 +69,32 @@ function categoryDisplay(cat) {
                 })
             }
             document.querySelector(".categories").appendChild(category);
-        } else {
-            console.log("Empty category")
         }
-
-
     })
 
 }
 
 function api() {
-    fetch(`https://competa-api.dev.competa.com/api/${method}`).then(result => {
-        return result.json();
-    })
+    fetch(`https://competa-api.dev.competa.com/api/${method}`)
+        .then(result => {
+            return result.json();
+        })
         .then(function (categories) {
             console.log(categories);
-            if (check == true) {
-                check = false;
-                output(categories);
-            } else {
-                categoryDisplay(categories);
-            }
+            categoryDisplay(categories);
         })
 }
 
-function clearStorage() {
+function clearStorage() { //tijdelijk
     let placeholder = [];
     localStorage.setItem("order", JSON.stringify(placeholder));
     location.reload();
 }
+
 window.onload = function () {
     document.querySelector(".nav__checkout").addEventListener("click", function () {
         window.location.href = "checkout.html";
+        order.push(amount);
         localStorage.setItem("order", JSON.stringify(order));
     })
     document.querySelector(".nav__home").addEventListener("click", function () {
