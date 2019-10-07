@@ -22,9 +22,10 @@ function categoryDisplay(cat) {
 
             let catname = document.createElement("h3")
             catname.className = "category__name";
-
-            catname.innerHTML = cat.name;
+            let name = document.createTextNode(cat.name);
+            catname.appendChild(name);
             category.appendChild(catname);
+
             if (method == "categoriesWithProducts" || method == `categoryWithProduct/${category_id}`) {
                 cat.products.forEach(catprod => {
                     let catcontainer = document.createElement("div")
@@ -32,19 +33,23 @@ function categoryDisplay(cat) {
 
                     let productname = document.createElement("p");
                     productname.className = "product__name " + catprod.id;
-                    productname.innerHTML = catprod.name;
+                    let prodname = document.createTextNode(catprod.name);
+                    productname.appendChild(prodname);
                     catcontainer.appendChild(productname);
 
                     let productprice = document.createElement("p");
                     productprice.className = "product__price";
-                    productprice.innerHTML = catprod.price + "$";
+                    let prodprice = document.createTextNode(catprod.price + "$");
+                    productprice.appendChild(prodprice);
                     catcontainer.appendChild(productprice);
+
                     category.appendChild(catcontainer);
 
                     if (catprod.description != 0) {
                         let productdesc = document.createElement("p");
                         productdesc.className = "product__ingredients";
-                        productdesc.innerHTML = catprod.description;
+                        let proddesc = document.createTextNode(catprod.description);
+                        productdesc.appendChild(proddesc);
                         category.appendChild(productdesc);
                     } else {
                         console.log("Empty product description");

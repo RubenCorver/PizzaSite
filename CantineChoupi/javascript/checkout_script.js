@@ -19,7 +19,6 @@ function checkout() {
     checkcontainer.appendChild(titleprice);
 
     order.forEach(info => {
-        
         let checkproduct = document.createElement("p")
         checkproduct.className = "checkout__product " + info.id;
         let name = document.createTextNode(info.name);
