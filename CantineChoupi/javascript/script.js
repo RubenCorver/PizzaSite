@@ -1,7 +1,6 @@
 let method = "categoriesWithProducts";
 let check = false;
 let orders = localStorage.getItem("order");
-let category_id = "";
 let order = JSON.parse(orders);
 
 
@@ -65,16 +64,7 @@ function categoryDisplay(cat) {
     })
 
 }
-function output(categories) {
-    categories.forEach(cat => {
-        console.log(cat.name);
-        if (method == "categoriesWithProducts" || method == `categoryWithProduct/${category_id}`) {
-            cat.products.forEach(catProd => {
-                console.log(catProd.name);
-            })
-        }
-    });
-}
+
 function api() {
     fetch(`https://competa-api.dev.competa.com/api/${method}`).then(result => {
         return result.json();
@@ -90,28 +80,6 @@ function api() {
         })
 }
 
-function category() {
-    check = true;
-    method = "categories";
-    api();
-}
-
-function product() {
-    check = true;
-    method = "products";
-    api();
-}
-function catProduct() {
-    check = true;
-    method = "categoriesWithProducts";
-    api();
-}
-function onecatProduct() {
-    check = true;
-    category_id = 1;
-    method = `categoryWithProduct/${category_id}`;
-    api();
-}
 function clearStorage() {
     let placeholder = [];
     localStorage.setItem("order", JSON.stringify(placeholder));

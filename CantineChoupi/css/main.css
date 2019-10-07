@@ -81,7 +81,7 @@
 
 .form {
   display: grid;
-  grid-template-columns: 50%;
+  grid-template-columns: 65%;
   justify-content: center;
 }
 
