@@ -3,27 +3,42 @@
 
 <head>
     <title>Checkout</title>
+    <script src="https://kit.fontawesome.com/45fe2415c2.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 
 <body>
-    <form>
-        <label >First name:</label>
-        <input type="text" name="firstname" placeholder="First name">
-        <label>Last name:</label>
-        <input type="text" name="lastname" placeholder="Last name">
-        <label>E-mail:</label>
-        <input type="email" name="email" placeholder="e-mail">
-        <label>Phone number:</label>
-        <input type="tel" name="phonenumber" maxlength="10" placeholder="06 12345678">
-        <label>zipcode:</label>
-        <input type="text" name="zipcode" maxlength="5" placeholder="zipcode">
-        <label>streetname:</label>
-        <input type="text" name="streetname" maxlength="5" placeholder="streetname">
-        <label>Housenumber:</label>
-        <input type="text" name="Housenumber" maxlength="5" placeholder="30">
+    <nav class="nav">
+        <button class="nav__button"><i class="fas fa-align-justify fa-3x"></i></button>
+        <div id="switch" class="nav__container">
+            <button class="nav__home">Home</button>
+            <button class="nav__menu">Menu</button>
+            <button class="nav__checkout">Checkout</button>
+        </div>
+    </nav>
+    <section class="checkout">
+        <form class="form">
+            <label>First name</label>
+            <input type="text" name="firstname" placeholder="First name">
+            <label>Last name</label>
+            <input type="text" name="lastname" placeholder="Last name">
+            <label>E-mail</label>
+            <input type="email" name="email" placeholder="E-Mail">
+            <label>Phone number</label>
+            <input type="tel" name="phonenumber" maxlength="10" placeholder="(+1) 12345678">
+            <label>zipcode</label>
+            <input type="text" name="zipcode" maxlength="5" placeholder="Zipcode">
+            <label>streetname</label>
+            <input type="text" name="streetname" maxlength="5" placeholder="Streetname">
+            <label>Housenumber</label>
+            <input type="text" name="Housenumber" maxlength="5" placeholder="83">
 
-        <input type="submit" value="Submit">
-    </form>
+            <input type="submit" value="Submit">
+        </form>
+        <div class="checkout__info">
+        </div>
+    </section>
+    <script type="text/javascript" src="./javascript/checkout_script.js"></script>
 </body>
 
 </html>
