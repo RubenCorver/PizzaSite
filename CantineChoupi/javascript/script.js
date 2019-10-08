@@ -4,8 +4,7 @@ let orders = localStorage.getItem("order");
 let abc = JSON.parse(orders);
 let order = [];
 let list = [];
-let quantity = new Array(list)
-let amount = { quantity, order };
+let amount = { list, order };
 
 function productClick(cat) {
     let orderid = event.target.dataset.product;
