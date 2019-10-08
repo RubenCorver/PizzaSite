@@ -9,16 +9,11 @@ let amount = { list, order };
 function productClick(cat) {
     let orderid = event.target.dataset.product;
     let id = cat.products.find(catprod => catprod.id == orderid);
-    // if (amount[id.name] > 0) {
-    //     amount[id.name]++;
-    // } else {
-    //     amount[id.name] = 1;
-    // }
     if (order.includes(id)) {
-        list.push([id.name]++);
+        list.push({[id.name]:i++});
     }
     else {
-        list[id.name] = 1;
+        list.push({[id.name]:i = 1});
         order.push(id);
     }
     console.log(amount);

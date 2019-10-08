@@ -8,7 +8,7 @@ function checkout() {
     let titlename = document.createElement("p")
     titlename.className = "checkout__title";
     let tname = document.createTextNode("Product:");
-
+    
     let titleprice = document.createElement("p")
     titleprice.className = "checkout__title";
     let tprice = document.createTextNode("Price:");
@@ -18,7 +18,10 @@ function checkout() {
     checkcontainer.appendChild(titlename);
     checkcontainer.appendChild(titleprice);
 
-    order.forEach(info => {
+    order.order.forEach(info => {
+        // order.amount.forEach(amount =>{
+        //     console.log(amount);
+        // })
         let checkproduct = document.createElement("p")
         checkproduct.className = "checkout__product";
         checkproduct.dataset.product = info.id;
@@ -49,9 +52,11 @@ function checkout() {
         let item = remove[i];
         item.addEventListener("click", function () {
             let target = event.target.dataset.product;
-            let id = order.find(order => order.id == target);
+            let id = order.order.find(order => order.id == target);
             console.log(id);
-            order.splice(id, 1);
+            order.order.splice(id, 1);
+            let idname = id.name;
+            delete order.list.idname;
             checkout();
             document.querySelector(".checkout__info").removeChild(checkcontainer);
             localStorage.setItem("order", JSON.stringify(order));
@@ -62,7 +67,6 @@ window.onload = function () {
     checkout()
     document.querySelector(".nav__checkout").addEventListener("click", function () {
         window.location.href = "checkout.html";
-        localStorage.setItem("order", JSON.stringify(order));
     })
     document.querySelector(".nav__home").addEventListener("click", function () {
         window.location.href = "index.html";
