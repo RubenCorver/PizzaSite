@@ -1,3 +1,37 @@
+.body {
+  background-color: #F5F5F5;
+}
+
+.nav {
+  display: inline-block;
+  position: absolute;
+}
+.nav__button {
+  border: none;
+  background: none;
+}
+.nav__button:hover {
+  cursor: pointer;
+}
+.nav__container {
+  display: none;
+  background: none;
+  background-color: #f1f1f1;
+  float: right;
+}
+.nav__link {
+  position: relative;
+  font-size: 15px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  width: 100%;
+}
+
+.show {
+  display: block;
+}
+
 .categories {
   display: grid;
   grid-template-columns: 45% 45%;
@@ -7,9 +41,68 @@
 }
 
 .category {
-  border: solid 1px;
-  border-color: black;
   width: 90%;
+  border: solid 1px;
+}
+.category__name {
+  background-color: #b3003b;
+  color: white;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-block-start: 1em;
+  padding-block-end: 1em;
+}
+.category__container {
+  display: grid;
+  grid-template-columns: 30% 30%;
+  justify-content: center;
+  background-color: white;
+}
+
+.product__name {
+  padding: 15px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.product__name:hover {
+  cursor: pointer;
+}
+.product__price {
+  padding: 15px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.product__ingredients {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-block-start: 1em;
+  padding-block-end: 1em;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 65%;
+  justify-content: center;
+}
+
+.checkout {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  justify-content: center;
+  text-align: center;
+}
+.checkout__container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border: solid black 1px;
+}
+.checkout__title {
+  background-color: #b3003b;
+  color: white;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-block-start: 1em;
+  padding-block-end: 1em;
 }
 
 /*# sourceMappingURL=main.css.map */

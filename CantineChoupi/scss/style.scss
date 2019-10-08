@@ -1,3 +1,43 @@
+@import "mixin";
+
+.body {
+    background-color: #F5F5F5
+}
+
+.nav {
+    display: inline-block;
+    position: absolute;
+
+    &__button {
+        border: none;
+        background: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__container {
+        display: none;
+        background: none;
+        background-color: #f1f1f1;
+        float: right;
+    }
+
+    &__link {
+        position: relative;
+        font-size: 15px;
+        text-decoration: none;
+        color: black;
+        display: block;
+        width: 100%;
+    }
+}
+
+.show {
+    display: block;
+}
+
 .categories {
     display: grid;
     grid-template-columns: 45% 45%;
@@ -5,8 +45,73 @@
     text-align: center;
     justify-content: center;
 }
-.category{
-    border: solid 1px;
-    border-color: black;
+
+.category {
     width: 90%;
+    border: solid 1px;
+
+    &__name {
+        background-color: #b3003b;
+        color: white;
+        @include marginblock;
+        padding-block-start: 1em;
+        padding-block-end: 1em;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: 30% 30%;
+        justify-content: center;
+        background-color: white;
+    }
+}
+
+.product {
+    &__name {
+        padding: 15px;
+        @include marginblock;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__price {
+        padding: 15px;
+        @include marginblock;
+    }
+
+    &__ingredients {
+        @include marginblock;
+        padding-block-start: 1em;
+        padding-block-end: 1em;
+    }
+
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 65%;
+    justify-content: center;
+}
+
+.checkout {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    justify-content: center;
+    text-align: center;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        border: solid black 1px;
+    }
+
+    &__title {
+        background-color: #b3003b;
+        color: white;
+        @include marginblock;
+        padding-block-start: 1em;
+        padding-block-end: 1em;
+    }
 }
