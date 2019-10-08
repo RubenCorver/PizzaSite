@@ -1,8 +1,11 @@
 let method = "categoriesWithProducts";
 let check = false;
 let orders = localStorage.getItem("order");
+let abc = JSON.parse(orders);
 let order = [];
-let amount = { order };
+let list = [];
+let quantity = new Array(list)
+let amount = { quantity, order };
 
 function productClick(cat) {
     let orderid = event.target.dataset.product;
@@ -13,10 +16,10 @@ function productClick(cat) {
     //     amount[id.name] = 1;
     // }
     if (order.includes(id)) {
-        amount[id.name]++;
+        list.push([id.name]++);
     }
     else {
-        amount[id.name] = 1;
+        list[id.name] = 1;
         order.push(id);
     }
     console.log(amount);
@@ -86,16 +89,16 @@ function api() {
 }
 
 function clearStorage() { //tijdelijk
-    let placeholder = [];
-    localStorage.setItem("order", JSON.stringify(placeholder));
+    list = {};
+    order = [];
+    localStorage.setItem("order", JSON.stringify(amount));
     location.reload();
 }
 
 window.onload = function () {
     document.querySelector(".nav__checkout").addEventListener("click", function () {
         window.location.href = "checkout.html";
-        order.push(amount);
-        localStorage.setItem("order", JSON.stringify(order));
+        localStorage.setItem("order", JSON.stringify(amount));
     })
     document.querySelector(".nav__home").addEventListener("click", function () {
         window.location.href = "index.html";
