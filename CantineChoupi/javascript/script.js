@@ -6,9 +6,9 @@ let list = {};
 let amount = { list, order };
 
 function productClick(cat) {
-    let orderid = event.target.dataset.product;
+    let orderid = event.target.getAttribute("productid");
     let id = cat.products.find(catprod => catprod.id == orderid);
-    if (order.includes(id)) { // for every id.name get the quantity
+    if (order.includes(id)) { 
         list[id.name]++;
     } else {
         list[id.name] = 1;
@@ -37,7 +37,7 @@ function categoryDisplay(cat) {
 
                     let productname = document.createElement("p");
                     productname.className = "product__name"
-                    productname.dataset.product = catprod.id;
+                    productname.setAttribute("productid", catprod.id);
                     let prodname = document.createTextNode(catprod.name);
                     productname.appendChild(prodname);
                     catcontainer.appendChild(productname);
