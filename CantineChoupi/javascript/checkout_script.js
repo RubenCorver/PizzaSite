@@ -8,7 +8,7 @@ function checkout() {
     let titlename = document.createElement("p")
     titlename.className = "checkout__title";
     let tname = document.createTextNode("Product:");
-    
+
     let titleprice = document.createElement("p")
     titleprice.className = "checkout__title";
     let tprice = document.createTextNode("Price:");
@@ -19,21 +19,22 @@ function checkout() {
     checkcontainer.appendChild(titleprice);
 
     order.order.forEach(info => {
-        // order.amount.forEach(amount =>{
-        //     console.log(amount);
-        // })
+        order.list.forEach(quantity =>{
+            let checkquantity = document.createElement("p")
+            checkquantity.className = "checkout__quantity";
+            let name = document.createTextNode(quantity[info.name]);
+        });
         let checkproduct = document.createElement("p")
         checkproduct.className = "checkout__product";
-        checkproduct.dataset.product = info.id;
         let name = document.createTextNode(info.name);
 
         let checkprice = document.createElement("p")
         checkprice.className = "checkout__price";
-        checkproduct.dataset.product = info.id;
+        checkprice.setAttribute("productid", info.id);
         let price = document.createTextNode(info.price + "$");
 
         let checkicon = document.createElement("i")
-        checkicon.className = "fas fa-times fa-x3 checkremove";
+        checkicon.className = "checkremove fas fa-times fa-x3";
 
         checkproduct.appendChild(name);
         checkprice.appendChild(price);
@@ -44,6 +45,7 @@ function checkout() {
 
 
     })
+    
     document.querySelector(".checkout__info").appendChild(checkcontainer);
 
     let remove = document.getElementsByClassName("checkremove");
@@ -51,12 +53,13 @@ function checkout() {
     for (let i = 0; i < remove.length; ++i) {
         let item = remove[i];
         item.addEventListener("click", function () {
-            let target = event.target.dataset.product;
+            let target = event.target.parentNode.getAttribute("productid");
+            console.log(target);
             let id = order.order.find(order => order.id == target);
+            console.log(name);
+            delete order.list[id.name];
             console.log(id);
             order.order.splice(id, 1);
-            let idname = id.name;
-            delete order.list.idname;
             checkout();
             document.querySelector(".checkout__info").removeChild(checkcontainer);
             localStorage.setItem("order", JSON.stringify(order));

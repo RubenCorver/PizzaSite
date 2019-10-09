@@ -1,19 +1,17 @@
 let method = "categoriesWithProducts";
 let check = false;
 let orders = localStorage.getItem("order");
-let abc = JSON.parse(orders);
 let order = [];
-let list = [];
+let list = {};
 let amount = { list, order };
 
 function productClick(cat) {
     let orderid = event.target.dataset.product;
     let id = cat.products.find(catprod => catprod.id == orderid);
-    if (order.includes(id)) {
-        list.push({[id.name]:i++});
-    }
-    else {
-        list.push({[id.name]:i = 1});
+    if (order.includes(id)) { // for every id.name get the quantity
+        list[id.name]++;
+    } else {
+        list[id.name] = 1;
         order.push(id);
     }
     console.log(amount);
