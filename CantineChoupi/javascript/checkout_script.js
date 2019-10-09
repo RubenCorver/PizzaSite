@@ -17,13 +17,14 @@ function checkout() {
     titleprice.appendChild(tprice);
     checkcontainer.appendChild(titlename);
     checkcontainer.appendChild(titleprice);
-
+    order.list.forEach(quantity => {
+        let checkquantity = document.createElement("p")
+        checkquantity.className = "checkout__quantity";
+        let name = document.createTextNode(quantity[info.name]);
+        checkquantity.appendChild(name);
+    });
     order.order.forEach(info => {
-        order.list.forEach(quantity =>{
-            let checkquantity = document.createElement("p")
-            checkquantity.className = "checkout__quantity";
-            let name = document.createTextNode(quantity[info.name]);
-        });
+
         let checkproduct = document.createElement("p")
         checkproduct.className = "checkout__product";
         let name = document.createTextNode(info.name);
@@ -39,13 +40,14 @@ function checkout() {
         checkproduct.appendChild(name);
         checkprice.appendChild(price);
 
+        checkproduct.appendChild(checkquantity);
         checkcontainer.appendChild(checkproduct);
         checkprice.appendChild(checkicon);
         checkcontainer.appendChild(checkprice);
 
 
     })
-    
+
     document.querySelector(".checkout__info").appendChild(checkcontainer);
 
     let remove = document.getElementsByClassName("checkremove");

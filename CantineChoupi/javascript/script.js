@@ -2,16 +2,16 @@ let method = "categoriesWithProducts";
 let check = false;
 let orders = localStorage.getItem("order");
 let order = [];
-let list = {};
-let amount = { list, order };
+let amount = { order };
 
 function productClick(cat) {
     let orderid = event.target.getAttribute("productid");
     let id = cat.products.find(catprod => catprod.id == orderid);
-    if (order.includes(id)) { 
-        list[id.name]++;
+    if (order.includes(id)) {
+        id.amount++;
+        console.log(id.name);
     } else {
-        list[id.name] = 1;
+        id.amount = 1;
         order.push(id);
     }
     console.log(amount);
