@@ -1,7 +1,10 @@
 let orders = localStorage.getItem("order");
-let order = JSON.parse(orders);
+let amount = JSON.parse(orders);
 
 function checkout() {
+    let checktotal = document.createElement("p")
+    checktotal.className = "checkout__total";
+
     let checkcontainer = document.createElement("article")
     checkcontainer.className = "checkout__container";
 
@@ -17,13 +20,13 @@ function checkout() {
     titleprice.appendChild(tprice);
     checkcontainer.appendChild(titlename);
     checkcontainer.appendChild(titleprice);
-    order.list.forEach(quantity => {
+
+    amount.order.forEach(info => {
+
         let checkquantity = document.createElement("p")
         checkquantity.className = "checkout__quantity";
-        let name = document.createTextNode(quantity[info.name]);
-        checkquantity.appendChild(name);
-    });
-    order.order.forEach(info => {
+        let quantity = document.createTextNode(info.amount + "x ");
+        checkquantity.appendChild(quantity);
 
         let checkproduct = document.createElement("p")
         checkproduct.className = "checkout__product";
@@ -32,7 +35,7 @@ function checkout() {
         let checkprice = document.createElement("p")
         checkprice.className = "checkout__price";
         checkprice.setAttribute("productid", info.id);
-        let price = document.createTextNode(info.price + "$");
+        let price = document.createTextNode(info.amount * info.price + "$");
 
         let checkicon = document.createElement("i")
         checkicon.className = "checkremove fas fa-times fa-x3";
@@ -40,15 +43,28 @@ function checkout() {
         checkproduct.appendChild(name);
         checkprice.appendChild(price);
 
-        checkproduct.appendChild(checkquantity);
-        checkcontainer.appendChild(checkproduct);
+        checkquantity.appendChild(checkproduct);
+        checkcontainer.appendChild(checkquantity);
         checkprice.appendChild(checkicon);
         checkcontainer.appendChild(checkprice);
-
-
     })
+    let total = 0;
+    let counter = 0;
+
+    amount.order.forEach(info => {
+        counter++
+        total += parseFloat(info.price * info.amount);
+    })
+    if (counter == 0) {
+        totaltext = document.createTextNode("checkping cart is empty");
+    }
+    else {
+        totaltext = document.createTextNode("The total price is: " + total + "$");
+    }
+    checktotal.appendChild(totaltext);
 
     document.querySelector(".checkout__info").appendChild(checkcontainer);
+    document.querySelector(".checkout__info").appendChild(checktotal);
 
     let remove = document.getElementsByClassName("checkremove");
 
@@ -56,30 +72,38 @@ function checkout() {
         let item = remove[i];
         item.addEventListener("click", function () {
             let target = event.target.parentNode.getAttribute("productid");
-            console.log(target);
-            let id = order.order.find(order => order.id == target);
-            console.log(name);
-            delete order.list[id.name];
+            let id = amount.order.find(order => order.id == target);
+            console.log(id.amount);
             console.log(id);
-            order.order.splice(id, 1);
-            checkout();
+            id.amount -= 1;
+            if (id.amount <= 0) {
+                console.log(id);
+                for (let i = amount.order.length - 1; i >= 0; i--) {
+                    if (amount.order[i] == id) {
+                        amount.order.splice(i, 1);
+                    }
+                }
+            }
             document.querySelector(".checkout__info").removeChild(checkcontainer);
-            localStorage.setItem("order", JSON.stringify(order));
+            document.querySelector(".checkout__info").removeChild(checktotal);
+            checkout()
+            localStorage.setItem("order", JSON.stringify(amount));
         })
     }
 }
 window.onload = function () {
     checkout()
-    document.querySelector(".nav__checkout").addEventListener("click", function () {
-        window.location.href = "checkout.html";
-    })
-    document.querySelector(".nav__home").addEventListener("click", function () {
+    document.querySelector(".nav__link").addEventListener("click", function () {
         window.location.href = "index.html";
     })
-    document.querySelector(".nav__menu").addEventListener("click", function () {
+    document.querySelector(".nav__link--checkout").addEventListener("click", function () {
+        window.location.href = "checkout.html";
+        localStorage.setItem("order", JSON.stringify(amount));
+    })
+    document.querySelector(".nav__link--menu").addEventListener("click", function () {
         api()
     })
-    document.querySelector(".fa-align-justify").addEventListener("click", function () {
-        document.getElementById("switch").classList.toggle("show");
+    document.querySelector(".navbutton").addEventListener("click", function () {
+        document.querySelector(".navswitch").classList.toggle("show");
     })
 }

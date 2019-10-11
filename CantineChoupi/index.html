@@ -9,15 +9,24 @@
 
 <body class="body">
     <nav class="nav">
-        <button class="nav__button"><i class="fas fa-align-justify fa-3x"></i></button>
-        <div id="switch" class="nav__container">
-            <button class="nav__home">Home</button>
-            <button class="nav__menu">Menu</button>
-            <button class="nav__checkout">Checkout</button>
+        <div class="nav__buttons">
+            <i class="fas fa-align-justify fa-3x navbutton"></i>
+            <div class="nav__container navswitch">
+                <button class="nav__link nav__link">Home</button>
+                <button class="nav__link nav__link--menu">Menu</button>
+                <button class="nav__link nav__link--checkout">Checkout</button>
+            </div>
+        </div>
+        <div class="shopcart">
+            <i class="fas fa-shopping-cart fa-3x shopbutton"></i>
         </div>
     </nav>
+    <div class="shopcart__info shopswitch">
+    </div>
     <main>
-        <section class="categories"></section> <!--Javascript menu section-->
+        <section class="categories">
+            <!--Javascript menu section-->
+        </section>
     </main>
     <script type="text/javascript" src="./javascript/script.js"></script>
 </body>

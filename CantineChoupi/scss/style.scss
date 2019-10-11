@@ -5,10 +5,8 @@
 }
 
 .nav {
-    display: inline-block;
-    position: absolute;
-
-    &__button {
+    display: flex;
+    &__buttons {
         border: none;
         background: none;
 
@@ -20,8 +18,8 @@
     &__container {
         display: none;
         background: none;
-        background-color: #f1f1f1;
-        float: right;
+        background-color: white;
+        position: absolute;
     }
 
     &__link {
@@ -31,6 +29,54 @@
         color: black;
         display: block;
         width: 100%;
+    }
+}
+
+.shopbutton {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.shopcart {
+    margin-left: 93%;
+    &__container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        text-align: center;
+        background-color: white;
+    }
+    &__total{
+        text-align: center;
+        background-color: white;
+        padding-block-start: 1em;
+        padding-block-end: 1em;
+        @include marginblock;
+    }
+    &__product {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        width: 60%;
+    }
+    &__title{
+        background-color: #b3003b;
+        color: white;
+        @include marginblock;
+        padding-block-start: 1em;
+        padding-block-end: 1em;
+    }
+    &__quantity {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    &__info {
+        position: absolute;
+        display: none;
+        background: none;
+        width: 20%;
+        margin-left: 79%;
     }
 }
 
@@ -101,10 +147,27 @@
     justify-content: center;
     text-align: center;
 
+    &__quantity {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    &__product {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+
     &__container {
+        background-color: white;
         display: grid;
         grid-template-columns: 50% 50%;
         border: solid black 1px;
+        &--total{
+            border: none;
+            grid-template-columns: 100%;
+            text-align: center;
+        }
     }
 
     &__title {
